@@ -1,0 +1,14 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+  // Search
+  // Configure glob patterns for excluding files and folders in searches. Inherits all glob patterns from the files.exclude setting.
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/build": true,
+    "**/platforms": true,
+    "**/plugins": true,
+    ".tmp": true,
+    "www": true
+  },
+  "typescript.tsdk": "./node_modules/typescript/lib"
+}

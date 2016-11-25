@@ -1,0 +1,17 @@
+.sudo: false
+language: node_js
+node_js:
+    - '6'
+install:
+  - npm install -g ionic@^2.1.12
+  - npm install -g cordova@^6.3.1
+  - npm install
+script:
+  - mkdirp www
+  - ionic build browser
+after_success:
+  - ncp web.config www/web.config
+  - npm prune --production
+deploy:
+  provider: azure_web_apps
+  skip_cleanup: true

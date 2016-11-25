@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Chapters</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
+      <ion-icon name="md-bookmark" item-left></ion-icon>
+      <div dir="rtl">{{item.name.ar}}</div>
+      <div class="item-note" item-right>
+        {{item.name.arroman}}
+      </div>
+    </button>
+  </ion-list>
+</ion-content>

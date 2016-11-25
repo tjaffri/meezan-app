@@ -1,0 +1,16 @@
+<ion-header>
+	<ion-navbar>
+		<button menuToggle *ngIf="!selectedItem">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+		<ion-title dir="rtl">{{selectedItem.name.ar}}</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content>
+	<ion-list *ngIf="!!itemDetails">
+		<ion-item text-wrap *ngFor="let verse of itemDetails.verses" dir="rtl">
+			{{verse.ar}}
+		</ion-item>
+	</ion-list>
+</ion-content>
