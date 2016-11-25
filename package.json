@@ -1,7 +1,7 @@
 {
   "name": "meezan",
   "author": "Taqi Jaffri",
-  "homepage": "http://meezan.azurewebsites.net/",
+  "homepage": "http://meezanapp.azurewebsites.net/",
   "description": "Meezan: A Quran app.",
   "private": true,
   "scripts": {
