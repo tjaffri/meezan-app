@@ -10,7 +10,9 @@ import { QuranService } from '../providers/quran-service';
 
 import { ItemDetailsPage } from '../pages/item-details/item-details';
 import { ListPage } from '../pages/list/list';
-import { ProfilePage } from '../pages/profile/profile';
+import { SettingsPage } from '../pages/settings/settings';
+import { LoginPage } from '../pages/login/login'
+import { TabsPage } from '../pages/tabs/tabs';
 
 let storage: Storage = new Storage();
 
@@ -26,7 +28,9 @@ export function getAuthHttp(http) {
     MyApp,
     ItemDetailsPage,
     ListPage,
-    ProfilePage
+    SettingsPage,
+    LoginPage,
+    TabsPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -36,7 +40,9 @@ export function getAuthHttp(http) {
     MyApp,
     ItemDetailsPage,
     ListPage,
-    ProfilePage
+    SettingsPage,
+    LoginPage,
+    TabsPage
   ],
   providers: [
     AuthService,

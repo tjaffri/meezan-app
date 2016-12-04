@@ -1,9 +1,11 @@
-import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import { Component } from '@angular/core';
+import { Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 
 import { ListPage } from '../pages/list/list';
-import { ProfilePage } from '../pages/profile/profile';
+import { SettingsPage } from '../pages/settings/settings';
+import { LoginPage } from '../pages/login/login'
+import { TabsPage } from '../pages/tabs/tabs';
 
 import { AuthService } from '../providers/auth-service';
 
@@ -11,9 +13,8 @@ import { AuthService } from '../providers/auth-service';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  @ViewChild(Nav) nav: Nav;
-
-  rootPage: any = ListPage;
+  // App startup (root) page, set dynamically later based on persisted auth state.
+  rootPage: any;
 
   pages: Array<{ title: string, component: any }>;
 
@@ -23,7 +24,7 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Chapters', component: ListPage },
-      { title: 'Profile', component: ProfilePage }
+      { title: 'Settings', component: SettingsPage }
     ];
 
   }
@@ -35,14 +36,20 @@ export class MyApp {
       StatusBar.styleDefault();
       Splashscreen.hide();
 
+      // load persisted auth state
+      this.auth.readPersistedStateAsync().then(() => {
+        // Set the appropriate startup page (set root so that no back button is displayed)
+        if (!this.auth.authenticated()) {
+          // Initiate login, if not logged in
+          this.rootPage = LoginPage;
+        } else {
+          // Go to the main tabs page container, if logged in
+          this.rootPage = TabsPage;
+        }
+      });
+
       // Schedule a token refresh on app start up
       this.auth.startupTokenRefresh();
     });
-  }
-
-  openPage(page) {
-    // Reset the content nav to have just this page
-    // we wouldn't want the back button to show in this scenario
-    this.nav.setRoot(page.component);
   }
 }
