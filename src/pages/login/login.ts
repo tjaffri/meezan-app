@@ -14,13 +14,20 @@ declare var Auth0Lock: any;
 })
 export class LoginPage {
   lock = new Auth0Lock(CLIENT_ID, DOMAIN, {
-    container: 'hiw-login-container',
     autoclose: true,
     auth: {
       redirect: false,
       params: {
         scope: 'openid offline_access',
       }
+    },
+    container: 'hiw-login-container',
+    languageDictionary: {
+      title: "Meezan"
+    },
+    theme: {
+      logo: '/assets/logo.png',
+      primaryColor: 'black'
     }
   });
 
