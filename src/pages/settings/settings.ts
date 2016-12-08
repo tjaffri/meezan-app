@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { App } from 'ionic-angular';
 
+import { AnalyticsService } from '../../providers/analytics-service';
+
 import { LoginPage } from '../login/login';
 import { AuthService } from '../../providers/auth-service';
 
@@ -16,10 +18,10 @@ import { AuthService } from '../../providers/auth-service';
 })
 export class SettingsPage {
 
-  constructor(public appCtrl: App, public auth: AuthService) { }
+  constructor(public appCtrl: App, public auth: AuthService, public analytics: AnalyticsService) { }
 
-  ionViewDidLoad() {
-    console.log('Settings Page: Loaded');
+  ionViewDidEnter() {
+    this.analytics.ReportPageNavigation(this.constructor.name);
   }
 
   public logout() {

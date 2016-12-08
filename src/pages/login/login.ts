@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 import { AuthService } from '../../providers/auth-service';
+import { AnalyticsService } from '../../providers/analytics-service';
+
 import { TabsPage } from '../tabs/tabs';
 import { CLIENT_ID, DOMAIN } from '../../config/auth0.ts';
 
@@ -31,11 +33,13 @@ export class LoginPage {
     }
   });
 
-  constructor(public navCtrl: NavController, public auth: AuthService) { }
+  constructor(public navCtrl: NavController, public auth: AuthService, public analytics: AnalyticsService) { }
+
+  ionViewDidEnter() {
+    this.analytics.ReportPageNavigation(this.constructor.name);
+  }
 
   ionViewDidLoad() {
-    console.log('Login Page: Loaded');
-
     // Set up callback for processing after login completion
     this.lock.on('authenticated', authResult => {
       // persist login state

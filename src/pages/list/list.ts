@@ -1,21 +1,29 @@
 import { Component } from '@angular/core';
-
 import { NavController, NavParams } from 'ionic-angular';
 
-import { ItemDetailsPage } from '../item-details/item-details';
 import { QuranService } from '../../providers/quran-service';
+import { AnalyticsService } from '../../providers/analytics-service';
+
+import { ItemDetailsPage } from '../item-details/item-details';
 
 @Component({
-    selector: 'page-list',
+  selector: 'page-list',
   templateUrl: 'list.html'
 })
 export class ListPage {
   selectedItem: any;
   items: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public quranService: QuranService) {
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    public quranService: QuranService,
+    public analytics: AnalyticsService) {
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
+  }
+
+  ionViewDidEnter() {
+    this.analytics.ReportPageNavigation(this.constructor.name);
   }
 
   ionViewDidLoad() {

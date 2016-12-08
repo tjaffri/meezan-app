@@ -12,6 +12,5 @@ export class TabsPage {
   tab1Root: any = ListPage;
   tab2Root: any = SettingsPage;
 
-  constructor() {
-  }
+  constructor() { }
 }

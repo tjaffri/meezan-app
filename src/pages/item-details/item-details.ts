@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-
 import { NavController, NavParams } from 'ionic-angular';
 
 import { QuranService } from '../../providers/quran-service';
+import { AnalyticsService } from '../../providers/analytics-service';
+
 import { Verse } from '../../model/verse';
 
 const bismillah: string = 'بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ';
@@ -15,9 +16,16 @@ export class ItemDetailsPage {
   selectedItem: any;
   itemDetails: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public quranService: QuranService) {
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    public quranService: QuranService,
+    public analytics: AnalyticsService) {
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
+  }
+
+  ionViewDidEnter() {
+    this.analytics.ReportPageNavigation(this.constructor.name);
   }
 
   ionViewDidLoad() {

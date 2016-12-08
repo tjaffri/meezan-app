@@ -7,6 +7,7 @@ import { Storage } from '@ionic/storage';
 import { MyApp } from './app.component';
 import { AuthService } from '../providers/auth-service';
 import { QuranService } from '../providers/quran-service';
+import { AnalyticsService } from '../providers/analytics-service';
 
 import { ItemDetailsPage } from '../pages/item-details/item-details';
 import { ListPage } from '../pages/list/list';
@@ -47,6 +48,7 @@ export function getAuthHttp(http) {
   providers: [
     AuthService,
     QuranService,
+    AnalyticsService,
     {
       provide: AuthHttp,
       useFactory: getAuthHttp,
