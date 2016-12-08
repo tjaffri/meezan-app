@@ -23,7 +23,7 @@ export class ListPage {
   }
 
   ionViewDidEnter() {
-    this.analytics.ReportPageNavigation(this.constructor.name);
+    this.analytics.ReportPageNavigation('ListPage');
   }
 
   ionViewDidLoad() {

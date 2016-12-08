@@ -21,7 +21,7 @@ export class SettingsPage {
   constructor(public appCtrl: App, public auth: AuthService, public analytics: AnalyticsService) { }
 
   ionViewDidEnter() {
-    this.analytics.ReportPageNavigation(this.constructor.name);
+    this.analytics.ReportPageNavigation('SettingsPage');
   }
 
   public logout() {

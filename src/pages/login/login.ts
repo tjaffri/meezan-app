@@ -36,7 +36,7 @@ export class LoginPage {
   constructor(public navCtrl: NavController, public auth: AuthService, public analytics: AnalyticsService) { }
 
   ionViewDidEnter() {
-    this.analytics.ReportPageNavigation(this.constructor.name);
+    this.analytics.ReportPageNavigation('LoginPage');
   }
 
   ionViewDidLoad() {

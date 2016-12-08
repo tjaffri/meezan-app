@@ -25,7 +25,7 @@ export class ItemDetailsPage {
   }
 
   ionViewDidEnter() {
-    this.analytics.ReportPageNavigation(this.constructor.name);
+    this.analytics.ReportPageNavigation('ItemDetailsPage');
   }
 
   ionViewDidLoad() {
