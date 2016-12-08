@@ -26,7 +26,7 @@ export class LoginPage {
       title: "Meezan"
     },
     theme: {
-      logo: '/assets/logo.png',
+      logo: 'http://meezanapp.azurewebsites.net/assets/logo.png',
       primaryColor: 'black'
     }
   });
